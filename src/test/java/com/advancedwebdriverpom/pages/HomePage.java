@@ -1,9 +1,10 @@
-package com.webdriverpom.pages;
+package com.advancedwebdriverpom.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+// This class contains the elements found on the Home page of the Luma eCommerce site https://magento.softwaretestingboard.com/
 public class HomePage {
     WebDriver driver;
     WebElement shopNewYogaButton;

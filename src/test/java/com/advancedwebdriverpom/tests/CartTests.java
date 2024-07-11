@@ -1,10 +1,10 @@
-package com.webdriverpom.tests;
+package com.advancedwebdriverpom.tests;
 
-import com.webdriverpom.actions.ItemPageActions;
-import com.webdriverpom.pages.CartPopup;
-import com.webdriverpom.pages.HomePage;
-import com.webdriverpom.pages.ItemDetailPage;
-import com.webdriverpom.pages.YogaCollectionPage;
+import com.advancedwebdriverpom.actions.ItemPageActions;
+import com.advancedwebdriverpom.pages.CartPopup;
+import com.advancedwebdriverpom.pages.HomePage;
+import com.advancedwebdriverpom.pages.ItemDetailPage;
+import com.advancedwebdriverpom.pages.YogaCollectionPage;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
@@ -19,7 +19,6 @@ public class CartTests {
     HomePage homePage;
     YogaCollectionPage yogaCollectionPage;
     CartPopup cartPopup;
-    ItemDetailPage itemDetailPage;
     ItemPageActions cartActions;
 
 
@@ -28,19 +27,28 @@ public class CartTests {
         driver = new ChromeDriver();
         driver.get("https://magento.softwaretestingboard.com/");
         homePage = new HomePage(driver);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        // The following two lines of code sets the window position for a multi-monitor setup
+        // (-1920 = monitor to left of main, 1920 = monitor to right of main). Can be commented out if not needed.
         Point position = new Point(-1920, 0);
         driver.manage().window().setPosition(position);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+    }
+    @Test
+    public void addYogaItemToCartByFirstSizeAndColour(){
+        homePage.getShopNewYogaButton().click();
+        yogaCollectionPage = new YogaCollectionPage(driver);
+        yogaCollectionPage.getFirstYogaClothingItem().click();
+        cartActions = new ItemPageActions(driver);
+        cartActions.AddItemToCartByFirstSizeAndColour();
     }
 
     @Test
-    public void addYogaItemItemToCartByFirstSizeAndColour(){
+    public void addItemToCartAndCheckSubtotalAgainstItemPrice(){
         homePage.getShopNewYogaButton().click();
-        System.out.println(driver.getCurrentUrl());
         yogaCollectionPage = new YogaCollectionPage(driver);
         yogaCollectionPage.getFirstYogaClothingItem().click();
-        System.out.println(driver.getCurrentUrl());
         cartActions = new ItemPageActions(driver);
         cartActions.AddItemToCartByFirstSizeAndColour();
         ItemDetailPage itemDetailPage = new ItemDetailPage(driver);
@@ -55,10 +63,8 @@ public class CartTests {
     @Test
     public void addYogaItemToCartByLastSizeAndColour(){
         homePage.getShopNewYogaButton().click();
-        System.out.println(driver.getCurrentUrl());
         yogaCollectionPage = new YogaCollectionPage(driver);
         yogaCollectionPage.getFirstYogaClothingItem().click();
-        System.out.println(driver.getCurrentUrl());
         cartActions = new ItemPageActions(driver);
         cartActions.AddItemToCartByLastSizeAndColour();
     }
@@ -66,10 +72,8 @@ public class CartTests {
     @Test
     public void addFourYogaItemsToCartByFirstSizeAndColour(){
         homePage.getShopNewYogaButton().click();
-        System.out.println(driver.getCurrentUrl());
         yogaCollectionPage = new YogaCollectionPage(driver);
         yogaCollectionPage.getFirstYogaClothingItem().click();
-        System.out.println(driver.getCurrentUrl());
         cartActions = new ItemPageActions(driver);
         cartActions.AddSpecificNumberOfItemsToCartByFirstSizeAndColour("4");
     }

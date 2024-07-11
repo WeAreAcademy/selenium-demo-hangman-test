@@ -1,10 +1,12 @@
-package com.webdriverpom.actions;
+package com.advancedwebdriverpom.actions;
 
-import com.webdriverpom.pages.ItemDetailPage;
+import com.advancedwebdriverpom.pages.ItemDetailPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+// This class contains common actions ('methods') that can be used on the individual items details page
+// e.g. when selecting a specific item of clothing
 public class ItemPageActions {
     WebDriver driver;
     ItemDetailPage itemDetailPage;
@@ -50,7 +52,7 @@ public class ItemPageActions {
             if (System.currentTimeMillis() - startTime > 10000) {
                 System.out.println("Failed to add item to cart");
                 assert false;
-                ;}
+                }
         }
         System.out.println("Items in shopping cart = " + driver.findElement(By.className("counter-number")).getText());
         assert (Integer.parseInt(driver.findElement(By.className("counter-number")).getText())) > 0;
@@ -61,10 +63,4 @@ public class ItemPageActions {
         itemQuantity.clear();
         itemQuantity.sendKeys(qty);
     }
-
-    public void getCartSubtotal(){
-        driver.findElement(By.className("price")).getText();
-    }
-
-
 }

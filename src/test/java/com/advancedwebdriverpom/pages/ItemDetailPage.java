@@ -1,4 +1,4 @@
-package com.webdriverpom.pages;
+package com.advancedwebdriverpom.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +14,7 @@ public class ItemDetailPage {
     WebElement addToCartButton;
     String itemPrice;
 
+    // This class contains common elements found on the item detail page (when selecting a specific item of clothing)
     public ItemDetailPage(WebDriver driver) {
         this.driver = driver;
         this.sizes = driver.findElements(By.cssSelector(".swatch-option.text"));

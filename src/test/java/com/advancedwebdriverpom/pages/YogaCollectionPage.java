@@ -1,4 +1,4 @@
-package com.webdriverpom.pages;
+package com.advancedwebdriverpom.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +8,7 @@ public class YogaCollectionPage {
     WebDriver driver;
     WebElement firstYogaClothingItem;
 
+    // This class contains the elements found on the Yoga collection products page
     public YogaCollectionPage(WebDriver driver) {
         this.driver = driver;
         this.firstYogaClothingItem = driver.findElement(By.className("product-item-info"));

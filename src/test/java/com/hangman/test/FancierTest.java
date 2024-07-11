@@ -6,6 +6,8 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import static com.codeborne.selenide.Condition.*;
@@ -22,6 +24,8 @@ public class FancierTest {
     //seems to be a way to extract out element selectors nicely.
 
     HangmanGameElements gamePage = new HangmanGameElements();
+    WebDriver driver = new ChromeDriver();
+
 
     @BeforeAll
     public static void setUpAll() {

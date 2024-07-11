@@ -14,6 +14,8 @@ import static com.codeborne.selenide.Selenide.open;
 // https://selenide.org/documentation.html
 public class SimplestTest {
 
+
+
     @BeforeEach
     public void setUp() {
         Configuration.browserSize = "1280x800";
@@ -76,5 +78,10 @@ public class SimplestTest {
         $("[data-testid='miss-count']").shouldHave(exactText("99"));
 
         //You have to write the rest here
+    }
+    @Test
+    public void playGameToVictory2() {
+        $("[data-testid='letter-button-p']").click();
+        $("[data-testid='letter-board']").shouldHave(text("m i s s i s s i p p i"));
     }
 }
